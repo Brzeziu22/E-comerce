@@ -4,7 +4,7 @@ import './categoriesStyle.scss';
 
 import Navigation from './routes/navigation/navigationComponent';
 import Home from './routes/home/homeComponent';
-
+import SignIn from './routes/singIn/signInComponent';
 const App = ()=> {
 
   
@@ -13,6 +13,7 @@ const App = ()=> {
     <Routes>
       <Route path='/' element={<Navigation/>}>
         <Route index element={<Home/>}/>
+        <Route path='signIn' element={<SignIn />}/>
       </Route>
      
     </Routes>
