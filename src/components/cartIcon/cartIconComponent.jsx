@@ -5,7 +5,6 @@ import { DropdownContext } from '../../contexts/dropdownContext';
 
 const CartIcon = ({click}) => {
     const{setIsCartOpenValue,isCartOpen}=useContext(DropdownContext)
-
     const toggleIsCartOpen=()=>{
         setIsCartOpenValue(!isCartOpen);
     }
