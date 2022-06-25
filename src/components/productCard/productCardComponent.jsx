@@ -9,7 +9,6 @@ const ProductCard = ({product}) => {
     const {addItemToCard}=useContext(DropdownContext)
 
     const addItem=()=>{
-        console.log(product)
         addItemToCard(product)
     }
 
