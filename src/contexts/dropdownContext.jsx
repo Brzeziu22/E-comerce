@@ -56,8 +56,11 @@ export const DropdownContext = createContext({
 
     useEffect(()=>{
         const newCartCount=products.reduce((total,product)=>{return (total + product.quantity)},0)
-        const newTotal=products.reduce((total,product)=>{return(total+(product.quantity * product.price))},0)
         setCartCount(newCartCount)
+    },[products])
+
+    useEffect(()=>{
+        const newTotal=products.reduce((total,product)=>{return(total+(product.quantity * product.price))},0)
         setTotal(newTotal)
     },[products])
 

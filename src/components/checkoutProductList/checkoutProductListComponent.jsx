@@ -5,14 +5,14 @@ import ProductCard from "../productCardCheckout/productCardChecoutComponent";
 
 
 const CheckoutProductList = () => {
-    const {products,total}=useContext(DropdownContext)
+    const {products}=useContext(DropdownContext)
     return ( 
-    <table>
-        {products.map(product=>{
-            return <tr><ProductCard product={product}/></tr>
+        <>
+             {products.map(product=>{
+            return(<ProductCard key={product.id} product={product}/>)
         })}
-    <tr><td>{total}$</td></tr>
-    </table> );
+    </>
+     );
 }
  
 export default CheckoutProductList;
