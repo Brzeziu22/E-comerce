@@ -1,10 +1,9 @@
 .buttonContainer {
-    min-width: 165px;
+    min-width: 120px;
     width: auto;
     height: 50px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1px;
     line-height: 50px;
-    padding: 0 35px 0 35px;
     font-size: 15px;
     background-color: black;
     color: white;
@@ -14,8 +13,9 @@
     border: none;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     transition: 0.15s;
+    border:1px solid white;
   
     &:hover {
       background-color: white;
