@@ -1,15 +1,15 @@
-import './categoriesListStyle.scss'
+import { CategoriesContainer}from'./categoriesListStyle.jsx'
 import CategoryItem from '../categoryItem/categoryItemComponent'
 const CategoriesList = ({categories}) => {
     
       
     return ( 
-    <div  className="categoriesContainer">
+    <CategoriesContainer>
         {categories.map(( {id,title,imageUrl}) =>(
         <CategoryItem key={id} title={title} imageUrl={imageUrl}/>
       ))}
 
-    </div> );
+    </CategoriesContainer> );
 }
  
 export default CategoriesList;

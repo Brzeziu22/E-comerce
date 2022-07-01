@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import {Link} from 'react-router-dom'
 
 
-import './cartDropdownStyles.scss';
+import {CartDropdownContainer,CartItems} from './cartDropdownStyles.jsx';
 
 import Button from "../Button/buttonComponent";
 import CartItem from '../cartItem/cartItemComponent';
@@ -11,15 +11,14 @@ import { DropdownContext } from '../../contexts/dropdownContext';
 const CartDropdown = () => {
     const {products,setIsCartOpenValue}=useContext(DropdownContext)
     return ( 
-        <div className='cartDropdownContainer'>
-            <div className='cartItems'>
+        <CartDropdownContainer>
+            <CartItems>
                 {products.map(item=><CartItem key={item.id} cartItem={item}/>)}
-                
-            </div>
+            </CartItems>
             <Link  to='/checkout'><Button onClick={()=>{setIsCartOpenValue(false)}}>
             go to checkout
              </Button></Link>
-        </div>
+        </CartDropdownContainer>
      );
 }
  
