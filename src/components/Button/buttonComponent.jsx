@@ -1,5 +1,4 @@
 
-import './buttonStyle.scss'
 import { BaseButton,GoogleSignInButton,InvertedButton } from './buttonStyle';
 const buttonTypeClasses={
     base:`base`,
