@@ -1,5 +1,7 @@
-import {CategoryContainer,BackgroundImage,CategoryBodyContainer,Title,Text} from "./categotyItemStyle.jsx"
 
+import { BackgroundImage,
+  CategoryBodyContainer,
+  CategoryContainer, } from "./categoryItemStyle"
 const CategoryItem=({title,imageUrl})=>{
     return (
     <CategoryContainer>
@@ -8,8 +10,8 @@ const CategoryItem=({title,imageUrl})=>{
       backgroundImage: `url(${imageUrl})`,
     }}/>
     <CategoryBodyContainer> 
-      <Title>{title}</Title>
-      <Text>Shop Now</Text>
+      <h2>{title}</h2>
+      <p>Shop Now</p>
     </CategoryBodyContainer>
   </CategoryContainer>)
 }

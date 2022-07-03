@@ -1,15 +1,16 @@
-import {Group,FormInputStyle,Label} from './formInputStyles.jsx'
-const FormInput = ({label, ...otherProps }) => {
-    return ( 
-        <Group>
-        <FormInputStyle {...otherProps} />
-        {label && (
-          <Label shrink={otherProps.value.length}>
-            {label}
-          </Label>
-        )}
-      </Group>
-     );
-}
- 
+import { FormInputLabel, Input, Group } from './formInputStyles';
+
+const FormInput = ({ label, ...otherProps }) => {
+  return (
+    <Group>
+      <Input {...otherProps} />
+      {label && (
+        <FormInputLabel shrink={otherProps.value.length}>
+          {label}
+        </FormInputLabel>
+      )}
+    </Group>
+  );
+};
+
 export default FormInput;

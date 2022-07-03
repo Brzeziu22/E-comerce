@@ -1,5 +1,7 @@
-import { CategoriesContainer}from'./categoriesListStyle.jsx'
 import CategoryItem from '../categoryItem/categoryItemComponent'
+
+import { CategoriesContainer } from './categoriesListStyle';
+
 const CategoriesList = ({categories}) => {
     
       

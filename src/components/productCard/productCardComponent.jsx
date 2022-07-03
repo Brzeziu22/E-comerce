@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-
-
-import { ProductCardContainer,Name,Price,Footer } from './productCardStyles';
+//components
 import Button from '../Button/buttonComponent'
+//contexts
 import { DropdownContext } from '../../contexts/dropdownContext';
+//styles
+import { Price,Name,Footer,ProductCardContainer } from './productCardStyle';
 
 const ProductCard = ({product}) => {
     const {id,name,price,imageUrl}= product;
