@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import './productCardStyles.scss'
+
 import { ProductCardContainer,Name,Price,Footer } from './productCardStyles';
 import Button from '../Button/buttonComponent'
 import { DropdownContext } from '../../contexts/dropdownContext';
