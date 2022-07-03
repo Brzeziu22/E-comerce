@@ -1,4 +1,4 @@
-import './categoryStyles.scss'
+import {CategoryStyles} from './categoryStyles'
 import ProductCard from '../../components/productCard/productCardComponent';
 import { useContext,useState,useEffect } from 'react';
 import {useParams} from 'react-router-dom'
@@ -14,9 +14,9 @@ const Category = () => {
         setProducts(categoriesMap[category])
         
     },[categoriesMap,category])
-    return ( <div className='categoryContainer2'>
+    return ( <CategoryStyles>
         {products && products.map((product)=>{return(<ProductCard key={product.id} product={product}/>)})}
-    </div> );
+    </CategoryStyles> );
 }
  
 export default Category;
