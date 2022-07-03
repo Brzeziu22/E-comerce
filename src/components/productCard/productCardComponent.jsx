@@ -1,8 +1,10 @@
 import { useContext } from 'react';
-
-import './productCardStyles.scss'
+//components
 import Button from '../Button/buttonComponent'
+//contexts
 import { DropdownContext } from '../../contexts/dropdownContext';
+//styles
+import { Price,Name,Footer,ProductCardContainer } from './productCardStyle';
 
 const ProductCard = ({product}) => {
     const {id,name,price,imageUrl}= product;
@@ -13,14 +15,14 @@ const ProductCard = ({product}) => {
     }
 
     return ( 
-    <div className='productCardContainer'>
+    <ProductCardContainer>
         <img src={imageUrl} alt={`${name}`}/>
-        <div className='footer'>
-            <span className='name'>{name}</span>
-            <span classNam='price'>${price}</span>
-        </div>
+        <Footer>
+            <Name>{name}</Name>
+            <Price>${price}</Price>
+        </Footer>
         <Button buttonType='inverted' onClick={addItem}> Add to card</Button>
-    </div> );
+    </ProductCardContainer> );
 }
  
 export default ProductCard;
