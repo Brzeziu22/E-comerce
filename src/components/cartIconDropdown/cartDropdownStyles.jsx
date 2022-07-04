@@ -22,7 +22,25 @@ export const CartItems =styled.div`
     flex-direction: column;
     overflow: scroll;
     &::-webkit-scrollbar {
-        display: none;
+      width: 8px;
+      border-radius:30px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0);
+      border-radius: 10px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
 `
 

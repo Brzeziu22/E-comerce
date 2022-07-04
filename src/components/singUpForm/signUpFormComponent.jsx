@@ -4,10 +4,6 @@ import FormInput from "../formInput/formInputComponent";
 
 import { SignUpFormContainer } from "./signInFormStyle";
 
-<<<<<<< HEAD
-import './signUpFormStyles.scss';
-=======
->>>>>>> take2-styled
 import Button from "../Button/buttonComponent";
 const defaultFormFields={
     displayName:'',
