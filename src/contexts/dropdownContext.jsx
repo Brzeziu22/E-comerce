@@ -43,58 +43,24 @@ const addCartItem=(products,productToAdd)=>{
         CHANGE_CART_ITEM_QUANTITY:'CHANGE_CART_ITEM_QUANTITY',
         CHANGE_CART_OPEN:'CHANGE_CART_OPEN',
         SET_TOTAL:'SET_TOTAL',
-        SET_CART_COUNT:'SET_CART_COUNT'
+        SET_CART_COUNT:'SET_CART_COUNT',
+        SET_CART_ITEMS:'SET_CART_ITEMS'
         
 
     }
 
     const CartReducer=(state,action)=>{
         const {type,payload}= action;
-        const {products}=payload;
-        const {isCartOpen}=state;
+        
         switch(type){
-            case CART_ACTION_TYPES.ADD_ITEM_TO_CART:
-                const {productToAdd}=payload;
-                const exisitingCartItem=products.find(
-                    (cartItem)=>cartItem.id===productToAdd.id
-                );
-                if(exisitingCartItem){
-                    return {...state,products:products.map(cartItem=>cartItem.id===productToAdd.id ?{...cartItem,quantity:cartItem.quantity+1}:cartItem)}
-                    }
-                return{...state,products:[...products,{...productToAdd,quantity:1}]}    
-            case CART_ACTION_TYPES.CHANGE_CART_ITEM_QUANTITY:  
-                    const {productToChange, e}=payload;
-                    const exisitingCartItem2=products.find(
-                        (cartItem)=>cartItem.id===productToChange.id
-                    );
-                const eventTargetName=e.target.getAttribute('name');
-                switch(eventTargetName){
-                    case 'add':
-                            return {...state,products:products.map(cartItem=>cartItem.id===productToChange.id ?{...cartItem,quantity:cartItem.quantity+1}:cartItem)}
-                    case 'sub':
-                        
-                            if(exisitingCartItem2.quantity>1){
-                                return {...state,products:products.map(cartItem=>cartItem.id===productToChange.id ?{...cartItem,quantity:cartItem.quantity-1}:cartItem)}
-                            }else if(exisitingCartItem2.quantity===1){
-                                return {...state,products:products.filter(product=>product.id !== exisitingCartItem2.id)};
-                            }
-                        
-                        break;
-                    case 'remove':
-                        return {...state,products:products.filter(product=>product.id !== exisitingCartItem2.id)};
-                    default:
-                    throw new Error('Error in change item Quantity')    
-                        }
+            case CART_ACTION_TYPES.SET_CART_ITEMS:
+                return{
+                    ...state,
+                    ...payload,
+                }
                     case 'CHANGE_CART_OPEN':
-
-                        return {...state,isCartOpen:!isCartOpen};
-                    case 'SET_TOTAL':
-                        console.log(products)
-                        const newTotal=products.reduce((total,product)=>{return(total+(product.quantity * product.price))},0)
-                        return{...state,total:newTotal}
-                    case 'SET_CART_COUNT':
-                        const newCartCount=products.reduce((total,product)=>{return (total + product.quantity)},0)
-                        return{...state,cartCount:newCartCount}
+                        return {...state,isCartOpen:!state.isCartOpen};
+                        
           default:
                 throw new Error('Unhandled type in CartReducer:'+type);
         }
@@ -128,25 +94,45 @@ export const DropdownContext = createContext({
 
        const [{products,isCartOpen,cartCount,total},dispatch]=useReducer(CartReducer,INITIAL_STATE); 
     useEffect(()=>{
-        products && dispatch({type:'SET_CART_COUNT',payload:{products:products}});
+        products && products && updateCartItemsReducer(products);
        // setCartCount(newCartCount)
     },[products])
 
     useEffect(()=>{
-        products && dispatch({type:'SET_TOTAL',payload:{products:products}});
+        products && updateCartItemsReducer(products);
        // setTotal(newTotal)
     },[products])
+
+    const updateCartItemsReducer = (products) => {
+        const newCartCount = products.reduce(
+          (total, cartItem) => total + cartItem.quantity,
+          0
+        );
+    
+        const newCartTotal = products.reduce(
+          (total, cartItem) => total + cartItem.quantity * cartItem.price,
+          0
+        );
+    
+        const payload = {
+          products,
+          cartCount: newCartCount,
+          cartTotal: newCartTotal,
+        };
+    
+        dispatch({type:'SET_CART_ITEMS', payload:payload});
+      };
 
     const setIsCartOpenValue=(value)=>{
         dispatch({type:'CHANGE_CART_OPEN',payload:{products:products,valueToSet:value}});
     }
     const addItemToCard=(productToAdd)=>{
-        dispatch({type:'ADD_ITEM_TO_CART',payload:{products:products,productToAdd:productToAdd}})
-      //  setProducts(addCartItem(products,productToAdd));
+        const newCartItems=addCartItem(products,productToAdd)
+        updateCartItemsReducer(newCartItems)
     }
     const changeItemQuantity=(productToChange,e)=>{
-        dispatch({type:'CHANGE_CART_ITEM_QUANTITY',payload:{products:products,productToChange:productToChange,e:e}})
-        //setProducts(changeCartItemQuantity(products,productToChange,e))
+        const newCartItemsQuantity=changeCartItemQuantity(products,productToChange,e);
+        updateCartItemsReducer(newCartItemsQuantity)
     }
     const value={isCartOpen,setIsCartOpenValue,products,addItemToCard,cartCount,changeItemQuantity,total}
 return(
