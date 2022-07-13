@@ -10,6 +10,7 @@ position: relative;
 
 
 img {
+  min-width:115px;
   width: 100%;
   height: 95%;
   object-fit: cover;
@@ -17,12 +18,13 @@ img {
 }
 
 button {
+  min-width:115px;
   width: 80%;
   opacity: 0.7;
   position: absolute;
   top: 255px;
   display: none;
-  
+  white-space:nowrap;
 }
 
 &:hover {

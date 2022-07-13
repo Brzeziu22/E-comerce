@@ -6,7 +6,7 @@ const INITIAL_STATE={
     currentUser:null,
 }
 
-const userReducer=(state,action)=>{
+export const userReducer=(state =INITIAL_STATE,action)=>{
     const {type,payload}= action;
     
 
@@ -16,6 +16,6 @@ const userReducer=(state,action)=>{
                 currentUser:payload}
     
     default:
-        throw new Error(`Unhandled Type in userReducer: ${type}`);
+        return state;
     }
 }

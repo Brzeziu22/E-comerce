@@ -9,11 +9,11 @@ import { Price,Name,Footer,ProductCardContainer } from './productCardStyle';
 const ProductCard = ({product}) => {
     const {id,name,price,imageUrl}= product;
     const {addItemToCard}=useContext(DropdownContext)
-
     const addItem=()=>{
         addItemToCard(product)
     }
 
+    
     return ( 
     <ProductCardContainer>
         <img src={imageUrl} alt={`${name}`}/>
