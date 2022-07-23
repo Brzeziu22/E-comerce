@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+
 import './index.scss';
 import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 import { UserProvider } from './contexts/userContext';
 import { CategoriesProvider } from './contexts/categoriesContext';
 import { DropdownProvider } from './contexts/dropdownContext';
-
+import { store } from './store/store';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
       <UserProvider>
         <CategoriesProvider>
@@ -21,6 +24,7 @@ root.render(
          </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

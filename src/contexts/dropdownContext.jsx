@@ -45,8 +45,6 @@ const addCartItem=(products,productToAdd)=>{
         SET_TOTAL:'SET_TOTAL',
         SET_CART_COUNT:'SET_CART_COUNT',
         SET_CART_ITEMS:'SET_CART_ITEMS'
-        
-
     }
 
     const CartReducer=(state,action)=>{
@@ -95,17 +93,15 @@ export const DropdownContext = createContext({
        const [{products,isCartOpen,cartCount,total},dispatch]=useReducer(CartReducer,INITIAL_STATE); 
     useEffect(()=>{
         products && products && updateCartItemsReducer(products);
-       // setCartCount(newCartCount)
     },[products])
 
     useEffect(()=>{
         products && updateCartItemsReducer(products);
-       // setTotal(newTotal)
     },[products])
 
     const updateCartItemsReducer = (products) => {
         const newCartCount = products.reduce(
-          (total, cartItem) => total + cartItem.quantity,
+          (cartCount, cartItem) => cartCount + cartItem.quantity,
           0
         );
     
@@ -117,10 +113,11 @@ export const DropdownContext = createContext({
         const payload = {
           products,
           cartCount: newCartCount,
-          cartTotal: newCartTotal,
+          total: newCartTotal,
         };
-    
+        console.log(payload)
         dispatch({type:'SET_CART_ITEMS', payload:payload});
+
       };
 
     const setIsCartOpenValue=(value)=>{
