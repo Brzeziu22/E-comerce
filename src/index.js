@@ -6,7 +6,7 @@ import './index.scss';
 import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 import { UserProvider } from './contexts/userContext';
-import { CategoriesProvider } from './contexts/categoriesContext';
+
 import { DropdownProvider } from './contexts/dropdownContext';
 import { store } from './store/store';
 import reportWebVitals from './reportWebVitals';
@@ -17,11 +17,11 @@ root.render(
     <Provider store={store}>
     <BrowserRouter>
       <UserProvider>
-        <CategoriesProvider>
+        
           <DropdownProvider>
              <App />
            </DropdownProvider>
-         </CategoriesProvider>
+        
       </UserProvider>
     </BrowserRouter>
     </Provider>

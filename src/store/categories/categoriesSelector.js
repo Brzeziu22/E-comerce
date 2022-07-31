@@ -1,1 +1,4 @@
-export const selectCategoriesMap=(state)=>{return state.categoriesMap};
+export const selectCategoriesMap=(state)=>{
+    console.log(state.categories.categoriesMap)
+    return state.categories.categoriesMap
+};
