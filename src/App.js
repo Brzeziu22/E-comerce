@@ -13,7 +13,7 @@ import Shop from './routes/shop/shopComponent';
 import Checkout from './routes/checkout/checkoutComponent';
 import { setCurrentUser } from './store/user/userAction';
 import { selectCategoriesMap } from './store/categories/categoriesSelector';
-import { setCategoriesMap } from './store/categories/categoriesAction';
+import { setCategories } from './store/categories/categoriesAction';
 const App = ()=> {
   const dispatch=useDispatch();
   useEffect(()=>{ 
@@ -30,7 +30,7 @@ const App = ()=> {
   const getCategoriesMap=async()=>{
       const categoryMap=await getCategoriesAndDocuments();
       
-      dispatch(setCategoriesMap(categoryMap))
+      dispatch(setCategories(categoryMap))
   }
   console.log('witam')
   getCategoriesMap();

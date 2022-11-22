@@ -3,7 +3,7 @@ import ProductCard from '../../components/productCard/productCardComponent';
 import { useContext,useState,useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import { selectCategoriesMap } from '../../store/categories/categoriesSelector';
-import { CategoriesContext } from '../../contexts/categoriesContext';
+
 import { useSelector } from 'react-redux';
 
 
