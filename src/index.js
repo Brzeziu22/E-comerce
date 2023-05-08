@@ -7,7 +7,7 @@ import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 import { UserProvider } from './contexts/userContext';
 
-import { DropdownProvider } from './contexts/dropdownContext';
+
 import { store } from './store/store';
 import reportWebVitals from './reportWebVitals';
 
@@ -18,9 +18,9 @@ root.render(
     <BrowserRouter>
       <UserProvider>
         
-          <DropdownProvider>
+          
              <App />
-           </DropdownProvider>
+           
         
       </UserProvider>
     </BrowserRouter>

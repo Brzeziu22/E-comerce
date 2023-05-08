@@ -1,16 +1,18 @@
-import { useContext } from "react";
-import { DropdownContext } from "../../contexts/dropdownContext";
-
+import { useDispatch,useSelector } from "react-redux";
+import { selectCartItems } from '../../store/dropdown/dropdownSelector';
+import { changeItemQuantity } from "../../store/dropdown/dropdownActions";
 //styles
 import { Quantity,Arrow,RemoveButton,Value,BaseSpan,ImageContainer,CheckoutItemContainer } from "./productCardCheckoutStyle";
 
 
 const ProductCard = ({product}) => {
     const {name,quantity,price,imageUrl}=product;
-const {changeItemQuantity}=useContext(DropdownContext)
+    const dispatch=useDispatch();
+    const products=useSelector(selectCartItems)
 
     const changeQuantity=(e)=>{
-        changeItemQuantity(product,e)
+       
+        dispatch(changeItemQuantity(products,product,e))
     }
     return ( 
     <CheckoutItemContainer>

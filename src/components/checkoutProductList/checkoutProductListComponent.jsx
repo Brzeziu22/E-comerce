@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import { DropdownContext } from "../../contexts/dropdownContext";
+import { useSelector } from "react-redux";
+
 import ProductCard from "../productCardCheckout/productCardChecoutComponent";
+import { selectCartItems } from '../../store/dropdown/dropdownSelector';
 
 
 
 const CheckoutProductList = () => {
-    const {products}=useContext(DropdownContext)
+    const products=useSelector(selectCartItems);
     return ( 
         <>
              {products.map(product=>{
